@@ -12,8 +12,8 @@ set cpo&vim
 
 " Use mermaid live editor's style
 setlocal expandtab
-setlocal shiftwidth=-1
-setlocal softtabstop=4
+setlocal shiftwidth=2
+setlocal softtabstop=-1
 setlocal tabstop=4
 
 " TODO: comments, formatlist stuff, based on what?

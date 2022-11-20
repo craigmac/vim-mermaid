@@ -8,24 +8,141 @@ if exists("b:current_syntax")
   finish
 endif
 
-" Things to highlight in mermaid diagram files:
-"
-" :help group-name
-"
-" Comment => any comment
-" Constant => any constant
-" Identifier => any variable name
-" Statement => if-then,loops, case, keyword, operators, exceptions
-" PreProc => includes,defines,macros,preprocessor #if
-" Type => int/long/static/volatile/struct/class/typedef/enum/etc.
-" Special => special char inside constant, jumpable tag, delimiter chars,
-" special chars inside a comment, debug statements
-" Underlined => text to stand out like HTML links
-" Ignore => left blank, can also use conceal as alternative to this
-" Error => any erroneous construct like invalid operator
-" Todo => TODO/FIXME/XXX mainly
-"
+syntax iskeyword @,48-57,192-255,$,_,-,:
+syntax keyword mermaidKeyword
+	\ _blank
+	\ _self
+	\ _parent
+	\ _top
+	\ ::icon
+	\ accDescr
+	\ accTitle
+	\ actor
+	\ activate
+	\ alt
+	\ and
+	\ as
+	\ autonumber
+	\ branch
+	\ break
+	\ callback
+	\ checkout
+	\ class
+	\ classDef
+	\ classDiagram
+	\ click
+	\ commit
+	\ commitgitGraph
+	\ critical
+	\ dataFormat
+	\ dateFormat
+	\ deactivate
+	\ direction
+	\ element
+	\ else
+	\ end
+	\ erDiagram
+	\ flowchart
+	\ gantt
+	\ gitGraph
+	\ graph
+	\ journey
+	\ link
+	\ LR
+	\ TD
+	\ TB
+	\ RL
+	\ loop
+	\ merge
+	\ mindmap root
+	\ Note
+	\ Note right of
+	\ Note left of
+	\ Note over
+	\ note
+	\ note right of
+	\ note left of
+	\ note over
+	\ opt
+	\ option
+	\ par
+	\ participant
+	\ pie
+	\ rect
+	\ requirement
+	\ rgb
+	\ section
+	\ sequenceDiagram
+	\ state
+	\ stateDiagram
+	\ stateDiagram-v2
+	\ style
+	\ subgraph
+	\ title
+highlight link mermaidKeyword Keyword
 
+syntax match mermaidStatement "|"
+syntax match mermaidStatement "--\?[>x)]>\?+\?-\?"
+syntax match mermaidStatement "\~\~\~"
+syntax match mermaidStatement "--"
+syntax match mermaidStatement "---"
+syntax match mermaidStatement "-->"
+syntax match mermaidStatement "-\."
+syntax match mermaidStatement "\.->"
+syntax match mermaidStatement "-\.-"
+syntax match mermaidStatement "-\.\.-"
+syntax match mermaidStatement "-\.\.\.-"
+syntax match mermaidStatement "=="
+syntax match mermaidStatement "==>"
+syntax match mermaidStatement "===>"
+syntax match mermaidStatement "====>"
+syntax match mermaidStatement "&"
+syntax match mermaidStatement "--o"
+syntax match mermaidStatement "--x"
+syntax match mermaidStatement "x--x"
+syntax match mermaidStatement "-----"
+syntax match mermaidStatement "---->"
+syntax match mermaidStatement "==="
+syntax match mermaidStatement "===="
+syntax match mermaidStatement "====="
+syntax match mermaidStatement ":::"
+syntax match mermaidStatement "<|--"
+syntax match mermaidStatement "\*--"
+syntax match mermaidStatement "o--"
+syntax match mermaidStatement "o--o"
+syntax match mermaidStatement "<--"
+syntax match mermaidStatement "<-->"
+syntax match mermaidStatement "\.\."
+syntax match mermaidStatement "<\.\."
+syntax match mermaidStatement "<|\.\."
+syntax match mermaidStatement "--|>"
+syntax match mermaidStatement "--\*"
+syntax match mermaidStatement "--o"
+syntax match mermaidStatement "\.\.>"
+syntax match mermaidStatement "\.\.|>"
+syntax match mermaidStatement "<|--|>"
+syntax match mermaidStatement "||--o{"
+highlight link mermaidStatement Statement
+
+syntax match mermaidIdentifier "[\+-]\?\w\+(.*)[\$\*]\?"
+highlight link mermaidIdentifier Identifier
+
+syntax match mermaidType "[\+-\#\~]\?\cint\>"
+syntax match mermaidType "[\+-\#\~]\?\cString\>"
+syntax match mermaidType "[\+-\#\~]\?\cbool\>"
+syntax match mermaidType "[\+-\#\~]\?\cBigDecimal\>"
+syntax match mermaidType "[\+-\#\~]\?\cList\~.\+\~"
+syntax match mermaidType "<<\w\+>>"
+highlight link mermaidType Type
+
+syntax match mermaidComment "%%.*$"
+highlight link mermaidComment Comment
+
+syntax region mermaidDirective start="%%{" end="\}%%"
+highlight link mermaidDirective PreProc
+
+syntax region mermaidString start=/"/ skip=/\\"/ end=/"/
+highlight link mermaidString String
 
 let b:current_syntax = "mermaid"
 
