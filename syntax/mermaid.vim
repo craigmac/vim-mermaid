@@ -8,6 +8,9 @@ if exists("b:current_syntax")
   finish
 endif
 
+let s:save_cpo = &cpo
+set cpo&vim
+
 syntax iskeyword @,48-57,192-255,$,_,-,:
 syntax keyword mermaidKeyword
 	\ _blank
@@ -145,5 +148,8 @@ syntax region mermaidString start=/"/ skip=/\\"/ end=/"/
 highlight link mermaidString String
 
 let b:current_syntax = "mermaid"
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
 
 " vim:set sw=2:
