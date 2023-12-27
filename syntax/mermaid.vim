@@ -2,13 +2,13 @@
 " Language:     Mermaid
 " Maintainer:   Craig MacEahern <https://github.com/craigmac/vim-mermaid>
 " Filenames:    *.mmd
-" Last Change:  2022 Nov 18
+" Last Change:  2022 Nov 22
 
 if exists("b:current_syntax")
   finish
 endif
 
-let s:save_cpo = &cpo
+let s:cpo_save = &cpo
 set cpo&vim
 
 syntax iskeyword @,48-57,192-255,$,_,-,:
@@ -149,7 +149,7 @@ highlight link mermaidString String
 
 let b:current_syntax = "mermaid"
 
-let &cpo = s:save_cpo
-unlet s:save_cpo
+let &cpo = s:cpo_save
+unlet s:cpo_save
 
 " vim:set sw=2:
