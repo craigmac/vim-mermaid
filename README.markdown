@@ -1,3 +1,7 @@
+This repository is no longer maintained, but you are free to fork and maintain
+it yourself. A better syntax experience is available using treesitter in neovim,
+using something like [tree-sitter-mermaid](https://github.com/monaqa/tree-sitter-mermaid)
+
 # Vim Mermaid runtime files
 
 This is the development version of Vim's included syntax highlighting and
