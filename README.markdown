@@ -4,8 +4,8 @@ This is the upstream version of Vim's included syntax highlighting rules and fil
 
 ## How to install this package
 
-[!NOTE]
-You generally don't _need_ to install these files, as they are occasionally merged by Vim downstream.  
+> [!NOTE]
+> You generally don't _need_ to install these files, as they are occasionally merged by Vim downstream.  
 
 ### Vim 8+ with native :packadd command
 
