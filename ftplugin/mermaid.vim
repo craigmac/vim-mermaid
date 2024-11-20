@@ -1,7 +1,7 @@
 " Vim filetype plugin
 " Language:     Mermaid
 " Maintainer:   Craig MacEachern <https://github.com/craigmac/vim-mermaid>
-" Last Change:  2022 Oct 13
+" Last Change:  2024 Nov 20
 
 if exists("b:did_ftplugin")
   finish
@@ -17,8 +17,8 @@ setlocal softtabstop=-1
 setlocal tabstop=4
 
 " TODO: comments, formatlist stuff, based on what?
-setlocal comments=b:#,fb:-
-setlocal commentstring=#\ %s
+setlocal comments=:%%
+setlocal commentstring=%%\ %s
 setlocal formatoptions+=tcqln formatoptions-=r formatoptions-=o
 setlocal formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\|^\\s*[-*+]\\s\\+\\\|^\\[^\\ze[^\\]]\\+\\]:\\&^.\\{4\\}
 
@@ -35,13 +35,6 @@ if !exists("g:no_plugin_maps") && !exists("g:no_markdown_maps")
   xnoremap <silent><buffer> ]] :<C-U>exe "normal! gv"<Bar>call search('\%(^#\{1,5\}\s\+\S\\|^\S.*\n^[=-]\+$\)', "sW")<CR>
   let b:undo_ftplugin .= '|sil! nunmap <buffer> [[|sil! nunmap <buffer> ]]|sil! xunmap <buffer> [[|sil! xunmap <buffer> ]]'
 endif
-
-" if has("folding") && get(g:, "markdown_folding", 0)
-"   setlocal foldexpr=MarkdownFold()
-"   setlocal foldmethod=expr
-"   setlocal foldtext=MarkdownFoldText()
-"   let b:undo_ftplugin .= "|setl foldexpr< foldmethod< foldtext<"
-" endif
 
 let &cpo = s:keepcpo
 unlet s:keepcpo
